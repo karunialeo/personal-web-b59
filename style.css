@@ -1,0 +1,87 @@
+body {
+    margin: 0;
+}
+
+/* HOME PAGE STYLES */
+
+nav {
+    background-color: #dedede;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+}
+
+nav a {
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+.web-logo {
+    width: 60px;
+}
+
+.contact-link {
+    color: white;
+    background-color: orangered;
+    border: 1px solid orangered;
+    border-radius: 5px;
+    padding: 5px 20px;
+}
+
+.link-active {
+    color: orangered;
+    font-weight: bold;
+}
+
+.link {
+    color: black;
+}
+
+/* CONTACT ME STYLES */
+
+.contact-section {
+    height: 90vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-form {
+    width: 400px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 30px;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.form-input {
+    border-radius: 5px;
+    border: 1px solid #cacaca;
+    padding: 7px;
+}
+
+.form-submit-button {
+    color: white;
+    background-color: orangered;
+    border: 1px solid orangered;
+    border-radius: 5px;
+    padding: 5px 20px;
+}
