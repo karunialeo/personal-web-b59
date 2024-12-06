@@ -1,87 +1,209 @@
 body {
-    margin: 0;
+  margin: 0;
 }
 
 /* HOME PAGE STYLES */
 
 nav {
-    background-color: #dedede;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 40px;
+  background-color: #dedede;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 40px;
 }
 
 nav a {
-    font-size: 20px;
-    text-decoration: none;
+  font-size: 20px;
+  text-decoration: none;
 }
 
 .navbar-left {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .navbar-links {
-    display: flex;
-    gap: 20px;
-    list-style: none;
+  display: flex;
+  gap: 20px;
+  list-style: none;
 }
 
 .web-logo {
-    width: 60px;
+  width: 60px;
 }
 
 .contact-link {
-    color: white;
-    background-color: orangered;
-    border: 1px solid orangered;
-    border-radius: 5px;
-    padding: 5px 20px;
+  color: white;
+  background-color: orangered;
+  border: 1px solid orangered;
+  border-radius: 5px;
+  padding: 5px 20px;
 }
 
 .link-active {
-    color: orangered;
-    font-weight: bold;
+  color: orangered;
+  font-weight: bold;
 }
 
 .link {
-    color: black;
+  color: black;
 }
 
 /* CONTACT ME STYLES */
 
 .contact-section {
-    height: 90vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+  height: 90vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .contact-form {
-    width: 400px;
-    border: 1px solid gray;
-    border-radius: 10px;
-    padding: 30px;
+  width: 400px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  padding: 30px;
 }
 
 .form-field {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  gap: 10px;
+}
+
+.form-label {
+  font-size: 18px;
 }
 
 .form-input {
-    border-radius: 5px;
-    border: 1px solid #cacaca;
-    padding: 7px;
+  border-radius: 5px;
+  border: 1px solid #cacaca;
+  padding: 7px;
+  font-size: 18px;
 }
 
 .form-submit-button {
-    color: white;
-    background-color: orangered;
-    border: 1px solid orangered;
-    border-radius: 5px;
-    padding: 5px 20px;
+  color: white;
+  background-color: orangered;
+  border: 1px solid orangered;
+  border-radius: 5px;
+  padding: 5px 20px;
+}
+
+/* BLOG PAGE STYLES */
+
+.section-title {
+  text-align: center;
+}
+
+.blog-form {
+  margin: 30px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.form-container {
+  width: 500px;
+}
+
+.input-blog-image-group {
+  width: 100%;
+  height: 40px;
+  font-size: 18px;
+  padding: 0 8px;
+  box-sizing: border-box;
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
+}
+
+.input-blog-image-group label {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.form-container button {
+  margin-top: 30px;
+  padding: 8px 20px;
+  color: white;
+  background-color: orangered;
+  border: none;
+  border-radius: 5px;
+}
+
+.button-group {
+  text-align: right;
+}
+
+hr {
+  width: 80%;
+}
+
+/* BLOG LIST */
+.blog-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px 0;
+}
+
+.blog-list {
+  width: 80%;
+}
+
+.blog-list-item {
+  display: flex;
+  gap: 20px;
+
+  border: 1px solid #c4c4c4;
+  padding: 20px;
+}
+
+.blog-image {
+  flex: 1;
+}
+
+.blog-image img {
+  height: 100%;
+  width: 100%;
+}
+
+.blog-content {
+  flex: 2;
+}
+
+.btn-group {
+  text-align: right;
+}
+
+.btn-edit {
+  padding: 8px 20px;
+  color: black;
+  background-color: #cacaca;
+  border: none;
+  border-radius: 5px;
+}
+
+.btn-post {
+  padding: 8px 20px;
+  color: white;
+  background-color: orangered;
+  border: none;
+  border-radius: 5px;
+}
+
+.blog-item-title {
+  text-decoration: none;
+}
+
+.blog-text {
+  margin: 0;
+}
+
+.relative-time {
+  color: #a2a2a2;
+  font-size: 14px;
+  text-align: right;
 }

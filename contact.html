@@ -1,74 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact Us</title>
     <link rel="icon" href="assets/icon-dev.png" />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="global-font.css" />
-</head>
-<body>
+  </head>
+  <body>
     <nav>
-        <div class="navbar-left">
-            <a href="#">
-                <img class="web-logo" src="assets/icon-dev.png" alt="web logo" />
-            </a>
-            <ul class="navbar-links">
-                <li>
-                    <a href="index.html" class="link">Home</a>
-                </li>
-                <li>
-                    <a href="#" class="link">Blog</a>
-                </li>
-            </ul>
-        </div>
-        
-        <div class="navbar-right">
-            <a href="contact.html" class="contact-link">Contact Me</a>
-        </div>
+      <div class="navbar-left">
+        <a href="#">
+          <img class="web-logo" src="assets/icon-dev.png" alt="web logo" />
+        </a>
+        <ul class="navbar-links">
+          <li>
+            <a href="index.html" class="link">Home</a>
+          </li>
+          <li>
+            <a href="#" class="link">Blog</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="navbar-right">
+        <a href="contact.html" class="contact-link">Contact Me</a>
+      </div>
     </nav>
     <main class="contact-section">
-        <form id="contactForm" class="contact-form">
-            <h1>Contact Me</h1>
-            <div class="form-field">
-                <label for="name">Name</label>
-                <input id="name" name="name" class="form-input" type="text" placeholder="name" required />
-            </div>
+      <form id="contactForm" class="contact-form">
+        <h1>Contact Me</h1>
+        <div class="form-field">
+          <label for="name">Name</label>
+          <input
+            id="name"
+            name="name"
+            class="form-input"
+            type="text"
+            placeholder="name"
+            required
+          />
+        </div>
 
-            <div class="form-field">
-                <label for="email">Email</label>
-                <input id="email" name="email" class="form-input" type="email" placeholder="email" required />
-            </div>
+        <div class="form-field">
+          <label for="email">Email</label>
+          <input
+            id="email"
+            name="email"
+            class="form-input"
+            type="email"
+            placeholder="email"
+            required
+          />
+        </div>
 
-            <div class="form-field">
-                <label for="phoneNumber">Phone Number</label>
-                <input id="phoneNumber" name="phoneNumber" class="form-input" type="number" placeholder="phone number" required/>
-            </div>
-            
-            <div class="form-field">
-                <label for="subject">Subject</label>
-                <input id="subject" name="subject" class="form-input" placeholder="subject" required></input>
-            </div>
+        <div class="form-field">
+          <label for="phoneNumber">Phone Number</label>
+          <input
+            id="phoneNumber"
+            name="phoneNumber"
+            class="form-input"
+            type="number"
+            placeholder="phone number"
+            required
+          />
+        </div>
 
-            <div class="form-field">
-                <label for="skill">Skill</label>
-                <select id="skill" name="skill" class="form-input" required>
-                    <option value="Frontend">Frontend</option>
-                    <option value="Backend">Backend</option>
-                </select>
-            </div>
+        <div class="form-field">
+          <label for="subject">Subject</label>
+          <input
+            id="subject"
+            name="subject"
+            class="form-input"
+            placeholder="subject"
+            required
+          />
+        </div>
 
-            <div class="form-field">
-                <label class="message-contact" for="message">Your Message</label>
-                <textarea id="message" name="message" class="form-input" required></textarea>
-            </div>
+        <div class="form-field">
+          <label for="skill">Skill</label>
+          <select id="skill" name="skill" class="form-input" required>
+            <option value="Frontend">Frontend</option>
+            <option value="Backend">Backend</option>
+          </select>
+        </div>
 
-            <button type="submit" class="form-submit-button">Submit</button>
-        </form>
+        <div class="form-field">
+          <label class="message-contact" for="message">Your Message</label>
+          <textarea
+            id="message"
+            name="message"
+            class="form-input"
+            required
+          ></textarea>
+        </div>
+
+        <button type="submit" class="form-submit-button">Submit</button>
+      </form>
     </main>
 
     <script src="submitForm.js"></script>
     <script src="belajar-js.js"></script>
-</body>
+  </body>
 </html>
