@@ -111,7 +111,7 @@ function formatDateToWIB(date) {
     "Des", // 11
   ];
 
-  let day = date.getDate().toString();
+  let day = date.getDate().toString().padStart(2, "0");
   let month = months[date.getMonth()]; // ===>>> bukan nama bulan, bukan angka bulan, tapi index dari bulan tersebut
   let year = date.getFullYear();
 
