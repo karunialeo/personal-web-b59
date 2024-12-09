@@ -3,21 +3,21 @@ let blogs = []; // length nya adalah 0
 function addBlog(e) {
   e.preventDefault();
 
-  let title = document.getElementById("input-blog-title").value;
-  let content = document.getElementById("input-blog-content").value;
-  let imageInput = document.getElementById("input-blog-image");
+  let inputTitle = document.getElementById("input-blog-title").value;
+  let inputContent = document.getElementById("input-blog-content").value;
+  let inputImage = document.getElementById("input-blog-image");
 
-  if (title == "" || content == "" || imageInput.files.length === 0) {
+  if (inputTitle == "" || inputContent == "" || inputImage.files.length === 0) {
     return alert("All input fields cannot be empty");
   }
 
-  let image = URL.createObjectURL(imageInput.files[0]);
+  let imageURL = URL.createObjectURL(inputImage.files[0]);
 
   let blog = {
     author: "Karunia Leo G",
-    title: title,
-    content: content,
-    image: image,
+    title: inputTitle,
+    content: inputContent,
+    image: imageURL,
     postedAt: new Date(),
   };
 
@@ -40,28 +40,28 @@ function renderBlog() {
 
     blogListElement.innerHTML += `
         <div id="${i}" class="blog-list-item">
-            <div class="blog-image">
-              <img src="${blogs[i].image}" alt="blog-image" />
-            </div>
-            <div class="blog-content">
-              <div class="btn-group">
-                <button class="btn-edit">Edit Post</button>
-                <button class="btn-post">Post Blog</button>
-              </div>
-              <h1>
-                <a href="blog-detail.html" class="blog-item-title">
-                  ${blogs[i].title}
-                </a>
-              </h1>
-              <div class="detail-blog-content">
-                ${formattedDate} | ${blogs[i].author}
-              </div>
-              <p class="blog-text">
-                ${blogs[i].content}
-              </p>
-              <p class="relative-time">${getRelativeTime(blogs[i].postedAt)}</p>
-            </div>
+          <div class="blog-image">
+            <img src="${blogs[i].image}" alt="blog-image" />
           </div>
+          <div class="blog-content">
+            <div class="btn-group">
+              <button class="btn-edit">Edit Post</button>
+              <button class="btn-post">Post Blog</button>
+            </div>
+            <h1>
+              <a href="blog-detail.html" class="blog-item-title">
+                ${blogs[i].title}
+              </a>
+            </h1>
+            <div class="detail-blog-content">
+              ${formattedDate} | ${blogs[i].author}
+            </div>
+            <p class="blog-text">
+              ${blogs[i].content}
+            </p>
+            <p class="relative-time">${getRelativeTime(blogs[i].postedAt)}</p>
+          </div>
+        </div>
     `;
   }
 }
@@ -69,29 +69,29 @@ function renderBlog() {
 function firstBlogContent() {
   return `
         <div class="blog-list-item">
-            <div class="blog-image">
-              <img src="assets/blog-img.png" alt="blog-image" />
-            </div>
-            <div class="blog-content">
-              <div class="btn-group">
-                <button class="btn-edit">Edit Post</button>
-                <button class="btn-post">Post Blog</button>
-              </div>
-              <h1>
-                <a href="blog-detail.html" class="blog-item-title">
-                  Blog Title with Javascript
-                </a>
-              </h1>
-              <div class="detail-blog-content">
-                12 Jul 2024 22:30 WIB | Karunia Leo G
-              </div>
-              <p class="blog-text">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga
-                explicabo totam labore sit tempore, voluptate vitae nesciunt in
-                maiores rerum, vero veritatis numquam iure aut sunt nemo.
-              </p>
-            </div>
+          <div class="blog-image">
+            <img src="assets/blog-img.png" alt="blog-image" />
           </div>
+          <div class="blog-content">
+            <div class="btn-group">
+              <button class="btn-edit">Edit Post</button>
+              <button class="btn-post">Post Blog</button>
+            </div>
+            <h1>
+              <a href="blog-detail.html" class="blog-item-title">
+                Blog Title with Javascript
+              </a>
+            </h1>
+            <div class="detail-blog-content">
+              12 Jul 2024 22:30 WIB | Karunia Leo G
+            </div>
+            <p class="blog-text">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga
+              explicabo totam labore sit tempore, voluptate vitae nesciunt in
+              maiores rerum, vero veritatis numquam iure aut sunt nemo.
+            </p>
+          </div>
+        </div>
     `;
 }
 
@@ -126,6 +126,13 @@ function formatDateToWIB(date) {
 
 function getRelativeTime(targetDate) {
   let now = new Date();
+  console.log("WAKTU SEKARANG :");
+  console.log(now);
+  console.log("WAKTU POST :");
+  console.log(targetDate);
+  let selisih = now - targetDate;
+  console.log("SELISIH WAKTU :");
+  console.log(selisih);
   let diffInSeconds = Math.floor((now - targetDate) / 1000); // satuan dari ms ke detik
 
   console.log(diffInSeconds);
@@ -138,4 +145,17 @@ function getRelativeTime(targetDate) {
   if (diffInMinutes < 60) {
     return `${diffInMinutes} minute${diffInMinutes > 1 ? "s" : ""} ago`;
   }
+
+  let diffInHours = Math.floor(diffInMinutes / 60);
+  if (diffInHours < 24) {
+    return `${diffInHours} hour${diffInHours > 1 ? "s" : ""} ago`;
+  }
+
+  let diffInDays = Math.floor(diffInHours / 24);
+  if (diffInDays < 30) {
+    return `${diffInDays} day${diffInDays > 1 ? "s" : ""} ago`;
+  }
+
+  let diffInMonth = Math.floor(diffInDays / 30);
+  return `${diffInMonth} month${diffInMonth > 1 ? "s" : ""} ago`;
 }

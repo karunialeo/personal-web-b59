@@ -1,10 +1,18 @@
 body {
   margin: 0;
+  font-size: 15px;
 }
 
-/* HOME PAGE STYLES */
+:root {
+  font-size: 17px;
+}
+
+/* NAVBAR STYLES */
 
 nav {
+}
+
+.nav-container {
   background-color: #dedede;
   display: flex;
   justify-content: space-between;
@@ -47,6 +55,59 @@ nav a {
 
 .link {
   color: black;
+}
+
+.hamburger-container {
+  display: none;
+}
+
+.hamburger-button {
+  font-size: 24px;
+}
+
+.hamburger-menu-list {
+  background-color: #dedede;
+  padding: 0 50px 40px;
+  margin: 0;
+  list-style: none;
+  text-align: right;
+}
+
+.show-menu {
+  display: none;
+}
+
+.hide-menu {
+  display: none;
+}
+
+/* HOME PAGE STYLES */
+.home-page {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* font-size: 18px; */
+  margin-top: 50px;
+  padding: 0 15 0px;
+  gap: 50px;
+}
+
+.profile-section {
+  flex: 30%;
+}
+
+#profileCard {
+  border: 1px solid #a8a8a8;
+  /* margin: 100px 40px; */
+  padding: 15px;
+  box-sizing: border-box;
+  border-radius: 15px;
+  box-shadow: 0 0 20px #a8a8a8;
+}
+
+.about-section {
+  flex: 50%;
 }
 
 /* CONTACT ME STYLES */
@@ -206,4 +267,35 @@ hr {
   color: #a2a2a2;
   font-size: 14px;
   text-align: right;
+}
+
+/* for mobile devices */
+@media (max-width: 768px) {
+  /* navbar */
+  .navbar-links {
+    display: none;
+  }
+  .navbar-right {
+    display: none;
+  }
+  .hamburger-container {
+    display: block;
+  }
+
+  /* homepage */
+  .home-page {
+    flex-direction: column;
+    margin-top: 50px;
+    padding: 0 60px;
+  }
+
+  .show-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  #profileCard {
+    width: 100%;
+  }
 }

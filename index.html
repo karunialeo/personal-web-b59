@@ -7,77 +7,91 @@
   </head>
   <body>
     <nav>
-      <div class="navbar-left">
-        <a href="#">
-          <img class="web-logo" src="assets/icon-dev.png" alt="web logo" />
-        </a>
-        <ul class="navbar-links">
-          <li>
-            <a href="index.html" class="link-active">Home</a>
-          </li>
-          <li>
-            <a href="blog.html" class="link">Blog</a>
-          </li>
-        </ul>
+      <div class="nav-container">
+        <div class="navbar-left">
+          <a href="#">
+            <img class="web-logo" src="assets/icon-dev.png" alt="web logo" />
+          </a>
+          <ul class="navbar-links">
+            <li>
+              <a href="index.html" class="link-active">Home</a>
+            </li>
+            <li>
+              <a href="blog.html" class="link">Blog</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="navbar-right">
+          <a href="contact.html" class="contact-link">Contact Me</a>
+        </div>
+        <div class="hamburger-container">
+          <button
+            type="button"
+            id="hamburgerButton"
+            class="contact-link hamburger-button"
+          >
+            ☰
+          </button>
+        </div>
       </div>
 
-      <div class="navbar-right">
-        <a href="contact.html" class="contact-link">Contact Me</a>
-      </div>
+      <ul id="menuList" class="hamburger-menu-list hide-menu">
+        <li>Home</li>
+        <li>Blog</li>
+        <li>Contact Me</li>
+      </ul>
     </nav>
 
-    <div
-      style="display: flex; background-color: white; justify-content: center"
-    >
+    <main class="home-page">
       <!-- Card Component -->
-      <div
-        style="
-          width: 400px;
-          border: 1px solid #a8a8a8;
-          margin: 100px 40px;
-          padding: 15px;
-          box-sizing: border-box;
-          border-radius: 15px;
-          box-shadow: 0 0 20px #a8a8a8;
-        "
+      <section class="profile-section">
+        <div id="profileCard">
+          <img src="coding.jpg" style="width: 100%; border-radius: 15px" />
+
+          <h1>Budi Raharja</h1>
+
+          <p class="paragraph-1" style="color: darkcyan; margin-bottom: 30px">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt
+            dolorum delectus rerum quasi fuga dignissimos perspiciatis
+            laudantium obcaecati qui.
+          </p>
+
+          <p class="paragraph-2" style="color: darkcyan; margin-bottom: 30px">
+            Ipsum dolore officia eius sed quae tempora, nam cumque in quod
+            voluptates explicabo dicta aliquid repudiandae optio adipisci. Fuga,
+            provident animi.
+          </p>
+
+          <table
+            style="
+              border: 1.5px solid #a8a8a8;
+              box-shadow: 0 0 4px #a8a8a8;
+
+              border-collapse: collapse;
+              width: 100%;
+            "
+          >
+            <tr>
+              <th style="border: 1px solid #a8a8a8">Experience</th>
+              <th style="border: 1px solid #a8a8a8">Year</th>
+            </tr>
+            <tr style="text-align: center">
+              <td style="border: 1px solid #a8a8a8">Personal Web</td>
+              <td style="border: 1px solid #a8a8a8">2024</td>
+            </tr>
+            <tr style="text-align: center">
+              <td style="border: 1px solid #a8a8a8">Mobile Application</td>
+              <td style="border: 1px solid #a8a8a8">2024</td>
+            </tr>
+          </table>
+        </div>
+      </section>
+
+      <section
+        class="about-section"
+        style="background-color: white; margin: 100px 0px"
       >
-        <img src="coding.jpg" style="width: 100%; border-radius: 15px" />
-
-        <h1>Budi Raharja</h1>
-
-        <p style="color: darkcyan; margin-bottom: 30px">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt
-          dolorum delectus rerum quasi fuga dignissimos perspiciatis laudantium
-          obcaecati qui ipsum dolore officia eius sed quae tempora, nam cumque
-          in quod voluptates explicabo dicta aliquid repudiandae optio adipisci.
-          Fuga, provident animi.
-        </p>
-
-        <table
-          style="
-            border: 1.5px solid #a8a8a8;
-            box-shadow: 0 0 4px #a8a8a8;
-
-            border-collapse: collapse;
-            width: 100%;
-          "
-        >
-          <tr>
-            <th style="border: 1px solid #a8a8a8">Experience</th>
-            <th style="border: 1px solid #a8a8a8">Year</th>
-          </tr>
-          <tr style="text-align: center">
-            <td style="border: 1px solid #a8a8a8">Personal Web</td>
-            <td style="border: 1px solid #a8a8a8">2024</td>
-          </tr>
-          <tr style="text-align: center">
-            <td style="border: 1px solid #a8a8a8">Mobile Application</td>
-            <td style="border: 1px solid #a8a8a8">2024</td>
-          </tr>
-        </table>
-      </div>
-
-      <div style="background-color: white; flex: 1; margin: 100px 0px">
         <h2>About Me</h2>
 
         <p>
@@ -103,7 +117,9 @@
             My skill
           </h2>
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
+
+    <script src="navbar.js"></script>
   </body>
 </html>
