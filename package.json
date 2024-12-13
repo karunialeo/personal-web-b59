@@ -1,0 +1,22 @@
+{
+  "name": "b59-personal-web",
+  "version": "1.0.0",
+  "description": "website personal web batch 59",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karunialeo/b59-personal-web.git"
+  },
+  "author": "Leo G",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/karunialeo/b59-personal-web/issues"
+  },
+  "homepage": "https://github.com/karunialeo/b59-personal-web#readme",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

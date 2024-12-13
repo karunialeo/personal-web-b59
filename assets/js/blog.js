@@ -13,7 +13,7 @@ function addBlog(e) {
 
   let imageURL = URL.createObjectURL(inputImage.files[0]);
 
-  let blog = {
+  let blogs = {
     author: "Karunia Leo G",
     title: inputTitle,
     content: inputContent,
@@ -21,7 +21,7 @@ function addBlog(e) {
     postedAt: new Date(),
   };
 
-  blogs.push(blog);
+  blogs.push(blogs);
 
   renderBlog();
 }
