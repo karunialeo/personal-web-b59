@@ -1,0 +1,51 @@
+{{#> layout title='Blog' }}
+<main>
+  <section class="blog-container">
+    <div style="position: relative; width: 80%; margin-bottom: 20px;">
+      <h1 class="section-title">My Blogs</h1>
+
+      {{#if user}}
+      <a class="btn btn-orange btn-blog-add" href="/blog-add">New Blog</a>
+      {{/if}}
+    </div>
+    <div id="blogList" class="blog-list">
+      {{#each blogs}}
+      <div id="${i}" class="blog-list-item">
+        <div class="blog-image">
+          <img src="{{this.image}}" alt="blog-image" style="height: 300px;" />
+        </div>
+        <div class="blog-content">
+          <div class="btn-group-blog">
+            <a href="/blog-edit/{{this.id}}" class="btn btn-edit">Edit</a>
+            <form action="/blog-delete/{{this.id}}?_method=DELETE" method="post" style="display: inline;">
+              <button onclick="return confirm('Are you sure you want to delete?')" type="submit"
+                class="btn btn-delete">Delete</button>
+            </form>
+          </div>
+          <h1>
+            <a href="/blog-detail/{{this.id}}" class="blog-item-title">
+              {{this.title}}
+            </a>
+          </h1>
+          <div class="detail-blog-content">
+            {{formatDateToWIB this.createdAt}} | Karunia Leo Gultom | Last edit : {{formatDateToWIB this.updatedAt}}
+          </div>
+          <p class="blog-text">
+            {{truncateText this.content}}
+          </p>
+          <p class="relative-time">
+            {{getRelativeTime this.updatedAt}}
+          </p>
+        </div>
+      </div>
+      {{else}}
+      <p style="text-align: center">Belum ada blog yang di post.</p>
+      {{/each}}
+    </div>
+  </section>
+</main>
+
+{{!--
+<script src="assets/js/blog.js"></script> --}}
+
+{{/layout}}
