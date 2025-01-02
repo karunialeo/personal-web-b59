@@ -14,6 +14,16 @@
           required />
       </div>
 
+      {{#if messages.error}}
+      <div class="alert alert-danger" role="alert">
+        {{messages.error}}
+      </div>
+      {{/if}}
+      {{#if messages.success}}
+      <div class="alert alert-success" role="alert">
+        {{messages.success}}
+      </div>
+      {{/if}}
       <div class="button-group">
         <button type="submit">Login</button>
       </div>

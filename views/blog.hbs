@@ -1,4 +1,4 @@
-{{#> layout title='Blog' }}
+{{#> layout title='Blog' user=user }}
 <main>
   <section class="blog-container">
     <div style="position: relative; width: 80%; margin-bottom: 20px;">
@@ -16,11 +16,13 @@
         </div>
         <div class="blog-content">
           <div class="btn-group-blog">
+            {{#if (equal ../user.id this.user_id)}}
             <a href="/blog-edit/{{this.id}}" class="btn btn-edit">Edit</a>
             <form action="/blog-delete/{{this.id}}?_method=DELETE" method="post" style="display: inline;">
               <button onclick="return confirm('Are you sure you want to delete?')" type="submit"
                 class="btn btn-delete">Delete</button>
             </form>
+            {{/if}}
           </div>
           <h1>
             <a href="/blog-detail/{{this.id}}" class="blog-item-title">
@@ -28,7 +30,7 @@
             </a>
           </h1>
           <div class="detail-blog-content">
-            {{formatDateToWIB this.createdAt}} | Karunia Leo Gultom | Last edit : {{formatDateToWIB this.updatedAt}}
+            {{formatDateToWIB this.createdAt}} | {{this.user.username}} | Last edit : {{formatDateToWIB this.updatedAt}}
           </div>
           <p class="blog-text">
             {{truncateText this.content}}

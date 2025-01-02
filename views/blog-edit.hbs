@@ -1,4 +1,4 @@
-{{#> layout title='Edit Blog' }}
+{{#> layout title='Edit Blog' user=user }}
 <main>
   <section class="blog-form">
     <form action="/blog-update/{{data.id}}?_method=PATCH" method="POST" class="form-container">

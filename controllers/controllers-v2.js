@@ -18,6 +18,7 @@ async function authRegister(req, res) {
     password: hashedPassword,
   });
 
+  req.flash("success", "Berhasil mendaftar. Silahkan login.");
   res.redirect("/login");
 }
 
@@ -32,14 +33,16 @@ async function authLogin(req, res) {
   });
 
   if (!user) {
-    return res.render("page-404", { message: "User tidak ditemukan" });
+    req.flash("error", "User tidak ditemukan.");
+    return res.redirect("/login");
   }
 
   // check if password is correct
   const isValidated = await bcrypt.compare(password, user.password);
 
   if (!isValidated) {
-    return res.render("page-403");
+    req.flash("error", "Password mismatch.");
+    return res.redirect("/login");
   }
 
   let loggedInUser = user.toJSON();
@@ -48,8 +51,7 @@ async function authLogin(req, res) {
 
   req.session.user = loggedInUser;
 
-  // delete req.session.user.password;
-
+  req.flash("success", "Berhasil login");
   res.redirect("/");
 }
 
@@ -75,7 +77,7 @@ function renderLogin(req, res) {
 }
 
 function renderRegister(req, res) {
-  const user = req.session.user;
+  const user = req.session.user || null;
 
   if (user) {
     res.redirect("/");
@@ -85,18 +87,30 @@ function renderRegister(req, res) {
 }
 
 async function renderBlog(req, res) {
-  const { user } = req.session;
+  let { user } = req.session;
+
+  console.log("user yg sedang login", user);
 
   const blogs = await Blog.findAll({
+    include: {
+      model: User,
+      as: "user",
+      attributes: { exclude: ["password"] },
+    },
     order: [["createdAt", "DESC"]],
   });
 
   console.log(blogs);
 
-  res.render("blog", { blogs: blogs, user });
+  // if (user) {
+  //   res.render("blog", { blogs, user: user });
+  // } else {
+  // }
+  res.render("blog", { blogs, user });
 }
 
 async function renderBlogDetail(req, res) {
+  let { user } = req.session;
   const { id } = req.params;
 
   const blogDetail = await Blog.findOne({
@@ -110,22 +124,24 @@ async function renderBlogDetail(req, res) {
   } else {
     console.log("detail blog :", blogDetail);
 
-    res.render("blog-detail", { data: blogDetail });
+    res.render("blog-detail", { data: blogDetail, user });
   }
 }
 
 function renderBlogAdd(req, res) {
-  res.render("blog-add");
+  let { user } = req.session;
+  res.render("blog-add", { user });
 }
 
 async function addBlog(req, res) {
+  let { user } = req.session;
   //   const { title, content } = req.body;
   console.log("form submitted");
   const { title, content } = req.body;
 
   const image = "https://picsum.photos/200/300";
 
-  const result = await Blog.create({ title, content, image });
+  const result = await Blog.create({ title, content, image, user_id: user.id });
 
   console.log("result creating blog", result);
 
@@ -133,6 +149,7 @@ async function addBlog(req, res) {
 }
 
 async function renderBlogEdit(req, res) {
+  let { user } = req.session;
   const { id } = req.params;
 
   const dataToEdit = await Blog.findOne({
@@ -146,7 +163,7 @@ async function renderBlogEdit(req, res) {
   } else {
     console.log("data yang mau di edit :", dataToEdit); // array
 
-    res.render("blog-edit", { data: dataToEdit });
+    res.render("blog-edit", { data: dataToEdit, user });
   }
 }
 
@@ -189,14 +206,17 @@ async function deleteBlog(req, res) {
 // CONTACT
 
 function renderContact(req, res) {
-  res.render("contact");
+  let { user } = req.session;
+  res.render("contact", { user });
 }
 
 function renderTestimonials(req, res) {
-  res.render("testimonial");
+  let { user } = req.session;
+  res.render("testimonial", { user });
 }
 
 function render404(req, res) {
+  let { user } = req.session;
   res.send(`halaman ini tidak ada!`);
 }
 

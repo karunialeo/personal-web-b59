@@ -1,5 +1,6 @@
 const express = require("express");
 var session = require("express-session");
+var flash = require("express-flash");
 var methodOverride = require("method-override");
 const path = require("path");
 const hbs = require("hbs");
@@ -26,11 +27,13 @@ const {
 
 const { formatDateToWIB, getRelativeTime } = require("./utils/time");
 const { truncateText } = require("./utils/text");
+const { sendAlert } = require("./utils/alert");
 
 const app = express();
 const PORT = process.env.SERVER_PORT || 5550;
 
 app.use(express.json());
+app.use(flash());
 
 app.use(
   session({
@@ -55,6 +58,19 @@ hbs.registerHelper("getRelativeTime", getRelativeTime);
 hbs.registerHelper("equal", function (a, b) {
   return a === b;
 });
+hbs.registerHelper("consolelog", function (log) {
+  console.log(log);
+});
+
+hbs.registerHelper("ifEqualAndUserExist", function (user, userId, options) {
+  if (user.id && user.id === userId) {
+    return options.fn(this);
+  } else {
+    options.inverse(this);
+  }
+});
+
+hbs.registerHelper("sendAlert", sendAlert);
 
 app.get("/login", renderLogin);
 app.get("/register", renderRegister);
