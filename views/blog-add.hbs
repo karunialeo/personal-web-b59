@@ -1,7 +1,7 @@
 {{#> layout title='Add Blog' user=user }}
 <main>
   <section class="blog-form">
-    <form action="/blog" method="post" class="form-container">
+    <form action="/blog" method="post" class="form-container" enctype="multipart/form-data">
       <h1 class="section-title">Add Blog</h1>
 
       <div class="form-field">
@@ -16,13 +16,12 @@
 
       <div class="form-field">
         <label for="image" class="form-label">Upload Image</label>
-        <div class="input-blog-image-group">
-          <label for="image">
-            <p>Attach File</p>
-            <img src="assets/img/file.png" />
-          </label>
-          <input id="image" name="image" class="form-input" type="file" placeholder="title" hidden />
-        </div>
+        <input id="image" name="image" class="form-control" type="file">
+      </div>
+
+      {{!-- image preview --}}
+      <div class="">
+        <img id="preview" src="#" alt="image preview" class="img-thumbnail d-none" style="max-height: 300px;">
       </div>
 
       <div class="button-group">
@@ -32,7 +31,6 @@
   </section>
 </main>
 
-{{!--
-<script src="assets/js/blog.js"></script> --}}
+<script src="/assets/js/image-preview.js"></script>
 
 {{/layout}}

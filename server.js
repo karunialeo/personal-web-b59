@@ -5,6 +5,7 @@ var methodOverride = require("method-override");
 const path = require("path");
 const hbs = require("hbs");
 require("dotenv").config();
+const upload = require("./middlewares/upload-file");
 
 const {
   renderLogin,
@@ -46,6 +47,7 @@ app.use(
 
 app.use(express.urlencoded({ extended: true }));
 app.use("/assets", express.static(path.join(__dirname, "./assets")));
+app.use("/uploads", express.static(path.join(__dirname, "./uploads")));
 app.use(methodOverride("_method"));
 
 app.set("view engine", "hbs");
@@ -84,7 +86,7 @@ app.get("/", renderHome);
 
 app.get("/blog", renderBlog);
 app.get("/blog-detail/:id", renderBlogDetail);
-app.post("/blog", addBlog);
+app.post("/blog", upload.single("image"), addBlog);
 app.get("/blog-add", renderBlogAdd);
 app.get("/blog-edit/:id", renderBlogEdit);
 app.patch("/blog-update/:id", updateBlog);

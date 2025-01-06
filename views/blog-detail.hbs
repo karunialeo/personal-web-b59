@@ -1,9 +1,9 @@
-{{#> layout title='Blog Detail', user=user }}
+{{#> layout title='Blog Detail' user=user }}
 <main>
   <section class="blog-container">
     <div class="blog-detail-container">
       <h1 class="h1">{{data.title}}</h1>
-      <p>{{formatDateToWIB data.createdAt}} | Karunia Leo Gultom</p>
+      <p>{{formatDateToWIB data.createdAt}} | {{data.user.username}}</p>
       <div class="blog-detail-content">
         <img src="{{data.image}}" class="blog-detail-image" alt="">
         <p>{{data.content}}</p>

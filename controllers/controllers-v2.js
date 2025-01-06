@@ -52,7 +52,7 @@ async function authLogin(req, res) {
   req.session.user = loggedInUser;
 
   req.flash("success", "Berhasil login");
-  res.redirect("/");
+  res.redirect("/blog-add");
 }
 
 function authLogout(req, res) {
@@ -114,6 +114,11 @@ async function renderBlogDetail(req, res) {
   const { id } = req.params;
 
   const blogDetail = await Blog.findOne({
+    include: {
+      model: User,
+      as: "user",
+      attributes: { exclude: ["password"] },
+    },
     where: {
       id: id,
     },
@@ -130,16 +135,24 @@ async function renderBlogDetail(req, res) {
 
 function renderBlogAdd(req, res) {
   let { user } = req.session;
+
+  if (!user) {
+    req.flash("error", "Silahkan login.");
+    return res.redirect("/login");
+  }
+
   res.render("blog-add", { user });
 }
 
 async function addBlog(req, res) {
+  console.log("request body", req.body);
+  console.log("informasi file", req.file);
   let { user } = req.session;
   //   const { title, content } = req.body;
   console.log("form submitted");
   const { title, content } = req.body;
 
-  const image = "https://picsum.photos/200/300";
+  const image = "http://localhost:5500/" + req.file.path;
 
   const result = await Blog.create({ title, content, image, user_id: user.id });
 
